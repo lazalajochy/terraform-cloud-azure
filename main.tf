@@ -36,20 +36,6 @@ resource "azurerm_resource_group" "rg" {
   }
 }
 
-# Azure container registry
-
-resource "azurerm_container_registry" "acr" {
-  name                = "acrjochy"
-  resource_group_name = "terraform-cloud-test"
-  location            = "eastus"
-  sku                 = "Basic"
-  admin_enabled       = true
-  tags = {
-    environment = "cloud-test"
-    source      = "terraform"
-  }
-}
-
 #    # Imagen en el ACR (debes subirla manualmente o luego automatizar con CI/CD)
 
 # 🐳 Azure Container Registry
