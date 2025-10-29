@@ -31,6 +31,7 @@ resource "azurerm_resource_group" "rg" {
     source      = "terraform"
     owner       = "jochy"
     cloud       = "Yes"
+    provider    = "terraform cloud"
 
   }
 }
