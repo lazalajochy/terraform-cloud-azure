@@ -30,6 +30,7 @@ resource "azurerm_resource_group" "rg" {
     environment = "cloud-test"
     source      = "terraform"
     owner       = "jochy"
+    cloud = "Yes"
 
   }
 }
