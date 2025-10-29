@@ -24,8 +24,8 @@ provider "azurerm" {
 # provides the resource group to logically contain resources
 
 resource "azurerm_resource_group" "rg" {
-  name     = "terraform-cloud-test"
-  location = "eastus"
+  name     = var.rg_name
+  location = var.location
   tags = {
     environment = "cloud-test"
     source      = "terraform"
