@@ -1,2 +1,2 @@
-rg_name = "terraform-cloud-test"
+rg_name  = "terraform-cloud-test"
 location = "eastus"
