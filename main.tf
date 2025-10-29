@@ -49,3 +49,20 @@ resource "azurerm_container_registry" "acr" {
     source      = "terraform"
   }
 }
+
+#    # Imagen en el ACR (debes subirla manualmente o luego automatizar con CI/CD)
+
+# 🐳 Azure Container Registry
+resource "azurerm_container_registry" "acr" {
+  name                = "acrjochy"
+  resource_group_name = "terraform-cloud-test"
+  location            = "eastus"
+  sku                 = "Basic" # puedes usar Standard o Premium si es para producción
+  admin_enabled       = true    # habilita usuario/contraseña para el pipeline
+
+  tags = {
+    environment = "test"
+    source      = "terraform"
+    owner       = "jochy"
+  }
+}
