@@ -63,7 +63,7 @@ resource "azurerm_container_group" "nestjs_container" {
 
   container {
     name   = "nestjs-app"
-    image  = "${azurerm_container_registry.acr.login_server}/common" # o el tag que usaste en el push
+    image  = "${azurerm_container_registry.acr.login_server}/common:31" # o el tag que usaste en el push
     cpu    = 1
     memory = 1.5
     ports {
