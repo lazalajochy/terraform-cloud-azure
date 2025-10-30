@@ -116,6 +116,7 @@ resource "azurerm_container_group" "sonarqube_container" {
       #SONARQUBE_JDBC_URL = "jdbc:postgresql://sonarqube-postgres:5432/sonarqube"
       SONARQUBE_JDBC_USERNAME = "admin"
       SONARQUBE_JDBC_PASSWORD = "admin"
+      PORT                    = "9000"
     }
   }
 
