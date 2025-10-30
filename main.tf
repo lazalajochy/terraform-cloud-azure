@@ -105,8 +105,8 @@ resource "azurerm_container_group" "sonarqube_container" {
   container {
     name   = "sonarqube-app"
     image  = "${azurerm_container_registry.acr.login_server}/sonarqube:latest" # o el tag que usaste en el push
-    cpu    = 1
-    memory = 1.5
+    cpu    = 2
+    memory = 4
     ports {
       port     = 9000
       protocol = "TCP"
