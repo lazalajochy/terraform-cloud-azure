@@ -97,14 +97,14 @@ resource "random_integer" "suffix" {
 #Azure container for sonarqube
 
 resource "azurerm_container_group" "sonarqube_container" {
-  name                = "sonarqube-container"
+  name                = "sonarqube_container"
   location            = "eastus"
   resource_group_name = "terraform-cloud-test"
   os_type             = "Linux"
 
   container {
     name   = "sonarqube-app"
-    image  = "sonarqube:latest" #"${azurerm_container_registry.acr.login_server}/sonarqube:9.9" # o el tag que usaste en el push
+    image  = "sonarqube:latest"
     cpu    = 1
     memory = 1.5
     ports {
