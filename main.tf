@@ -92,3 +92,39 @@ resource "random_integer" "suffix" {
   min = 10000
   max = 99999
 }
+
+
+#Azure container for sonarqube
+
+resource "azurerm_container_group" "sonarqube_container" {
+  name                = "sonarqube-container"
+  location            = "eastus"
+  resource_group_name = "terraform-cloud-test"
+  os_type             = "Linux"
+
+  container {
+    name   = "sonarqube-app"
+    image  = "sonarqube:latest" #"${azurerm_container_registry.acr.login_server}/sonarqube:9.9" # o el tag que usaste en el push
+    cpu    = 1
+    memory = 1.5
+    ports {
+      port     = 9000
+      protocol = "TCP"
+    }
+
+    environment_variables = {
+      #SONARQUBE_JDBC_URL = "jdbc:postgresql://sonarqube-postgres:5432/sonarqube"
+      SONARQUBE_JDBC_USERNAME = "admin"
+      SONARQUBE_JDBC_PASSWORD = "admin"
+    }
+  }
+
+  image_registry_credential {
+    server   = azurerm_container_registry.acr.login_server
+    username = azurerm_container_registry.acr.admin_username
+    password = azurerm_container_registry.acr.admin_password
+  }
+
+  ip_address_type = "Public"
+  dns_name_label  = "sonarqubecloud-${random_integer.suffix.result}" # genera un subdominio único
+}
